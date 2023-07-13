@@ -14,6 +14,11 @@ date: "`r Sys.Date()`"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Introduction
+
+Is there a difference in ethnicity of people eating out?
+does the number of times between
+
 ## There were two years in which the General Social Survey asked about the frequency of eating out.
 ### Find those years and for the first year the question was asked download that years data in a stata format - its name will be "GSSxxxx.dta" where the xxxx is replaced by the year.  For example if the year was 1983 its name would be GSS1983.dta. Your assignment is to download the GSS yearly dataset for the first year the question was asked and then  write up the answer to the question by editing the  code block in line 31 to eval=TRUE and finish the job. 
 
@@ -28,8 +33,8 @@ require(tigerstats)
 require(knitr)
 require(foreign)
 ```
-```{r, eval=FALSE}
-GSS <-read.dta(file="GSSxxxx.dta")
+```{r, eval=TRUE, include=FALSE}
+GSS <-readstata13::read.dta13(file="GSS1996.dta")
 GSS <- droplevels(GSS)
 mydata <- select(GSS,race,age,eatout)
 mydata <- na.omit(mydata)
@@ -37,8 +42,34 @@ mydata <- na.omit(mydata)
 
 
 
+# Method
+In order to interpret the data, Categorical Numerical method is needed to determine which ethnicity eats out out more often.
+
+# Descriptive Results
+
+## graphical results
+These graphs show that...
+
+```{r}
+barchartGC(~race + eatout,data=mydata)
+barchartGC(~race + eatout,data=mydata,type="percent")
+```
+The graph above presents how "White" people eat out more frequently than "Black" people and "other" people.
+
+## Numerical description
 
 
+```{r}
+table1 <- xtabs(~race + eatout,data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
 
+## inferential results
 
-
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+I conclude there is a difference in people's ethnicity with how often they eat out
