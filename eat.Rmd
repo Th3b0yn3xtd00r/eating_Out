@@ -64,14 +64,20 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+The results in this numerical description states and shows the frequency of eating out in white ethnicity as opposed to black and other ethnicity. Stating white ethnicity frequency of eating out is more than black and other ethnicity.
+
 ## inferential results
 
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+fisherXY(mydata$race,mydata$eatout,printAll=T)
 ```
 
+Chi squared test shows the P value 0.0008179, we see the number is so small that we reject the null hypothesis.
+The fisher exact test for count data shows that the p value 0.001208 is also very small that we reject the null hypothesis.
+
 # Disscussion and conclusion
-The p-value is so small and I reject the null. I conclude there is a difference in people's ethnicity with how often they eat out
+Based on the results, we reject the null hypothesis since the p value is so small. Considering the p value is 0.0008179, I conclude there is a difference in the frequency of eating out based on white ethnicity eating out.
+
 
