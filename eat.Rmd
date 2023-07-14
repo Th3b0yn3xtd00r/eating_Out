@@ -53,7 +53,7 @@ barchartGC(~race + eatout,data=mydata)
 barchartGC(~race + eatout,data=mydata,type="percent")
 ```
 
-The graph above presents how "White" people eat out more frequently than "Black" people and "other" people.
+The Bar chart above presents how "White" people eat out more frequently than "Black" people and "other" people.
 
 ## Numerical description
 
